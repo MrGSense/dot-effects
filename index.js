@@ -23,7 +23,19 @@ dotsArr.forEach((cols, i) => {
 });
 
 function growDot(i, j) {
-  if (!dotsArr[i][j].classList.contains("grow")) {
-    dotsArr[i][j].classList.add("grow");
+  if (dotsArr[i] && dotsArr[i][j]) {
+    if (!dotsArr[i][j].classList.contains("grow")) {
+      dotsArr[i][j].classList.add("grow");
+      setTimeout(() => {
+        growDot(i - 1, j);
+        growDot(i + 1, j);
+        growDot(i, j + 1);
+        growDot(i, j - 1);
+      }, 100);
+
+      setTimeout(() => {
+        dotsArr[i][j].classList.remove("grow");
+      }, 300);
+    }
   }
 }
