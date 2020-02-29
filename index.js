@@ -23,11 +23,26 @@ for (let i = 0; i < radios.length; i++) {
   });
 }
 
+// Run Event
+function runEvent(i, j) {
+  switch (effect) {
+    case "waves":
+    default:
+      waveDot(i, j);
+    case "burst":
+      burstRow = i;
+      burstCol = j;
+      burstDot(i, j);
+    case "snake":
+    //   snakeDot(i, j);
+  }
+}
+
 // Trigger Effect
 dotsArr.forEach((cols, i) => {
   cols.forEach((dot, j) => {
     dot.addEventListener("click", () => {
-      waveDot(i, j);
+      runEvent(i, j);
     });
   });
 });
@@ -43,6 +58,55 @@ function waveDot(i, j) {
         waveDot(i, j + 1);
         waveDot(i, j - 1);
       }, 100);
+
+      setTimeout(() => {
+        dotsArr[i][j].classList.remove("grow");
+      }, 300);
+    }
+  }
+}
+
+// Burst Effect
+let burstRow = "";
+let burstCol = "";
+
+function burstDot(i, j) {
+  if (dotsArr[i] && dotsArr[i][j]) {
+    if (!dotsArr[i][j].classList.contains("grow")) {
+      dotsArr[i][j].classList.add("grow");
+
+      if (i === burstRow) {
+        if (j === burstCol) {
+          setTimeout(() => {
+            burstDot(i + 1, j);
+            burstDot(i - 1, j);
+            burstDot(i, j + 1);
+            burstDot(i, j - 1);
+          }, 100);
+        } else if (j > burstCol) {
+          setTimeout(() => {
+            burstDot(i + 1, j);
+            burstDot(i - 1, j);
+            burstDot(i, j + 1);
+          }, 100);
+        } else if (j < burstCol) {
+          setTimeout(() => {
+            burstDot(i + 1, j);
+            burstDot(i - 1, j);
+            burstDot(i, j - 1);
+          }, 100);
+        }
+      } else {
+        if (i > burstRow) {
+          setTimeout(() => {
+            burstDot(i + 1, j);
+          }, 100);
+        } else if (i < burstRow) {
+          setTimeout(() => {
+            burstDot(i - 1, j);
+          }, 100);
+        }
+      }
 
       setTimeout(() => {
         dotsArr[i][j].classList.remove("grow");
