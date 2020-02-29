@@ -14,23 +14,34 @@ for (let i = 0; i < rows; i++) {
   }
 }
 
+// Radio Selection
+const radios = document.forms["effects"].elements["effect"];
+let effect = "";
+for (let i = 0; i < radios.length; i++) {
+  radios[i].addEventListener("click", () => {
+    effect = radios[i].value;
+  });
+}
+
+// Trigger Effect
 dotsArr.forEach((cols, i) => {
   cols.forEach((dot, j) => {
     dot.addEventListener("click", () => {
-      growDot(i, j);
+      waveDot(i, j);
     });
   });
 });
 
-function growDot(i, j) {
+// Wave Effect
+function waveDot(i, j) {
   if (dotsArr[i] && dotsArr[i][j]) {
     if (!dotsArr[i][j].classList.contains("grow")) {
       dotsArr[i][j].classList.add("grow");
       setTimeout(() => {
-        growDot(i - 1, j);
-        growDot(i + 1, j);
-        growDot(i, j + 1);
-        growDot(i, j - 1);
+        waveDot(i - 1, j);
+        waveDot(i + 1, j);
+        waveDot(i, j + 1);
+        waveDot(i, j - 1);
       }, 100);
 
       setTimeout(() => {
