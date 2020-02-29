@@ -34,7 +34,9 @@ function runEffect(i, j) {
       burstCol = j;
       burstDot(i, j);
     case "snake":
-    //   snakeDot(i, j);
+      snakeRow = i;
+      snakeCol = j;
+      snakeDot(i, j);
   }
 }
 
@@ -42,7 +44,7 @@ function runEffect(i, j) {
 dotsArr.forEach((cols, i) => {
   cols.forEach((dot, j) => {
     dot.addEventListener("click", () => {
-      runEvent(i, j);
+      runEffect(i, j);
     });
   });
 });
@@ -77,6 +79,7 @@ function burstDot(i, j) {
 
       if (i === burstRow) {
         if (j === burstCol) {
+          // Dot clicked
           setTimeout(() => {
             burstDot(i + 1, j);
             burstDot(i - 1, j);
@@ -84,12 +87,14 @@ function burstDot(i, j) {
             burstDot(i, j - 1);
           }, 100);
         } else if (j > burstCol) {
+          // Move right
           setTimeout(() => {
             burstDot(i + 1, j);
             burstDot(i - 1, j);
             burstDot(i, j + 1);
           }, 100);
         } else if (j < burstCol) {
+          // Move left
           setTimeout(() => {
             burstDot(i + 1, j);
             burstDot(i - 1, j);
@@ -98,10 +103,12 @@ function burstDot(i, j) {
         }
       } else {
         if (i > burstRow) {
+          // Move up
           setTimeout(() => {
             burstDot(i + 1, j);
           }, 100);
         } else if (i < burstRow) {
+          // Mode down
           setTimeout(() => {
             burstDot(i - 1, j);
           }, 100);
