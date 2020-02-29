@@ -121,3 +121,32 @@ function burstDot(i, j) {
     }
   }
 }
+
+// Snake Effect
+let snakeRow = "";
+let snakeCol = "";
+
+function snakeDot(i, j) {
+  if (dotsArr[i] && dotsArr[i][j]) {
+    if (!dotsArr[i][j].classList.contains("grow")) {
+      dotsArr[i][j].classList.add("grow");
+
+      // Dot clicked
+      if (i === snakeRow && j === snakeCol && j < 7.5) {
+        // Move right
+        setTimeout(() => {
+          snakeDot(i, j + 1);
+        }, 100);
+      } else if (i === snakeRow && j === snakeCol && j > 7.5) {
+        // Move left
+        setTimeout(() => {
+          snakeDot(i, j + 1);
+        }, 100);
+      }
+
+      setTimeout(() => {
+        dotsArr[i][j].classList.remove("grow");
+      }, 2000);
+    }
+  }
+}
