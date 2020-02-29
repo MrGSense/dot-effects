@@ -24,7 +24,7 @@ for (let i = 0; i < radios.length; i++) {
 }
 
 // Run Event
-function runEvent(i, j) {
+function runEffect(i, j) {
   switch (effect) {
     case "waves":
     default:
