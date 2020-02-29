@@ -34,4 +34,9 @@ h3 {
   width: 14px;
   border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.3s linear;
+}
+
+.dot.grow {
+  transform: scale(2);
 }
