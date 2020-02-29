@@ -11,8 +11,30 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h3>Click on a dot</h3>
+    <h1>Click on a dot</h1>
+
     <div id="container" class="container"></div>
+
+    <h3>Select an effect</h3>
+
+    <form>
+      <div class="formgroup">
+        <input type="radio" name="effect" value="wave" />
+        <span class="checkmark"></span>
+        <label for="wave">Wave</label>
+      </div>
+      <div class="formgroup">
+        <input type="radio" name="effect" value="trickle" />
+        <span class="checkmark"></span>
+        <label for="wave">Trickle</label>
+      </div>
+      <div class="formgroup">
+        <input type="radio" name="effect" value="snake" />
+        <span class="checkmark"></span>
+        <label for="wave">Snake</label>
+      </div>
+    </form>
+
     <script src="index.js"></script>
   </body>
 </html>
