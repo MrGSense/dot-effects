@@ -33,10 +33,10 @@ function runEffect(i, j) {
       burstRow = i;
       burstCol = j;
       burstDot(i, j);
-    case "snake":
-      snakeRow = i;
-      snakeCol = j;
-      snakeDot(i, j);
+    case "trickle":
+      trickleRow = i;
+      trickleCol = j;
+      trickleDot(i, j);
   }
 }
 
@@ -117,36 +117,61 @@ function burstDot(i, j) {
 
       setTimeout(() => {
         dotsArr[i][j].classList.remove("grow");
-      }, 300);
+      }, 120);
     }
   }
 }
 
-// Snake Effect
-let snakeRow = "";
-let snakeCol = "";
+// Trickle Effect
+let trickleRow = "";
+let trickleCol = "";
 
-function snakeDot(i, j) {
+function trickleDot(i, j) {
   if (dotsArr[i] && dotsArr[i][j]) {
     if (!dotsArr[i][j].classList.contains("grow")) {
       dotsArr[i][j].classList.add("grow");
 
-      // Dot clicked
-      if (i === snakeRow && j === snakeCol && j < 7.5) {
-        // Move right
-        setTimeout(() => {
-          snakeDot(i, j + 1);
-        }, 100);
-      } else if (i === snakeRow && j === snakeCol && j > 7.5) {
-        // Move left
-        setTimeout(() => {
-          snakeDot(i, j + 1);
-        }, 100);
+      if (i === trickleRow) {
+        if (j === trickleCol) {
+          // Dot clicked
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+            trickleDot(i - 1, j);
+            trickleDot(i, j + 1);
+            trickleDot(i, j - 1);
+          }, 400);
+        } else if (j > trickleCol) {
+          // Move right
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+            trickleDot(i - 1, j);
+            trickleDot(i, j + 1);
+          }, 400);
+        } else if (j < trickleCol) {
+          // Move left
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+            trickleDot(i - 1, j);
+            trickleDot(i, j - 1);
+          }, 400);
+        }
+      } else {
+        if (i > trickleRow) {
+          // Move up
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+          }, 400);
+        } else if (i < trickleRow) {
+          // Mode down
+          setTimeout(() => {
+            trickleDot(i - 1, j);
+          }, 400);
+        }
       }
 
       setTimeout(() => {
         dotsArr[i][j].classList.remove("grow");
-      }, 2000);
+      }, 200);
     }
   }
 }
