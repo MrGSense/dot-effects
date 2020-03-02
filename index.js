@@ -23,6 +23,21 @@ for (let i = 0; i < radios.length; i++) {
   });
 }
 
+// Input Speed Selection
+let growSpeed = 100;
+let shrinkSpeed = 300;
+
+const growSpeedInput = document.forms["speed"].elements["growSpeed"];
+const shrinkSpeedInput = document.forms["speed"].elements["shrinkSpeed"];
+
+growSpeedInput.addEventListener("input", e => {
+  growSpeed = e.target.value;
+});
+
+shrinkSpeedInput.addEventListener("input", e => {
+  shrinkSpeed = e.target.value;
+});
+
 // Run Event
 function runEffect(i, j) {
   switch (effect) {
@@ -51,11 +66,11 @@ function waveDot(i, j) {
         waveDot(i + 1, j);
         waveDot(i, j + 1);
         waveDot(i, j - 1);
-      }, 100);
+      }, growSpeed);
 
       setTimeout(() => {
         dotsArr[i][j].classList.remove("grow");
-      }, 300);
+      }, shrinkSpeed);
     }
   }
 }
