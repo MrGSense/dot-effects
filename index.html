@@ -18,21 +18,30 @@
     <h3>Select an effect</h3>
 
     <form name="effects">
-      <label class="formgroup"
+      <label class="formgroupradio"
         >Wave
         <input type="radio" checked="checked" name="effect" value="wave" />
         <span class="checkmark"></span>
       </label>
-      <label class="formgroup"
-        >Burst
-        <input type="radio" name="effect" value="burst" />
-        <span class="checkmark"></span>
-      </label>
-      <label class="formgroup"
-        >Trickle
-        <input type="radio" name="effect" value="trickle" />
-        <span class="checkmark"></span>
-      </label>
+    </form>
+
+    <form name="speed">
+      <div class="form-vcontainer">
+        <label class="flat-input-label">Grow Speed</label>
+        <input
+          class="flat-input"
+          type="number"
+          placeholder="Enter in ms: 1000ms = 1s"
+        />
+      </div>
+      <div class="form-vcontainer">
+        <label class="flat-input-label">Shrink Speed</label>
+        <input
+          class="flat-input"
+          type="number"
+          placeholder="Enter in ms: 1000ms = 1s"
+        />
+      </div>
     </form>
 
     <script src="index.js"></script>
