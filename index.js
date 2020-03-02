@@ -29,14 +29,6 @@ function runEffect(i, j) {
     case "waves":
     default:
       waveDot(i, j);
-    case "burst":
-      burstRow = i;
-      burstCol = j;
-      burstDot(i, j);
-    case "trickle":
-      trickleRow = i;
-      trickleCol = j;
-      trickleDot(i, j);
   }
 }
 
@@ -64,114 +56,6 @@ function waveDot(i, j) {
       setTimeout(() => {
         dotsArr[i][j].classList.remove("grow");
       }, 300);
-    }
-  }
-}
-
-// Burst Effect
-let burstRow = "";
-let burstCol = "";
-
-function burstDot(i, j) {
-  if (dotsArr[i] && dotsArr[i][j]) {
-    if (!dotsArr[i][j].classList.contains("grow")) {
-      dotsArr[i][j].classList.add("grow");
-
-      if (i === burstRow) {
-        if (j === burstCol) {
-          // Dot clicked
-          setTimeout(() => {
-            burstDot(i + 1, j);
-            burstDot(i - 1, j);
-            burstDot(i, j + 1);
-            burstDot(i, j - 1);
-          }, 100);
-        } else if (j > burstCol) {
-          // Move right
-          setTimeout(() => {
-            burstDot(i + 1, j);
-            burstDot(i - 1, j);
-            burstDot(i, j + 1);
-          }, 100);
-        } else if (j < burstCol) {
-          // Move left
-          setTimeout(() => {
-            burstDot(i + 1, j);
-            burstDot(i - 1, j);
-            burstDot(i, j - 1);
-          }, 100);
-        }
-      } else {
-        if (i > burstRow) {
-          // Move up
-          setTimeout(() => {
-            burstDot(i + 1, j);
-          }, 100);
-        } else if (i < burstRow) {
-          // Mode down
-          setTimeout(() => {
-            burstDot(i - 1, j);
-          }, 100);
-        }
-      }
-
-      setTimeout(() => {
-        dotsArr[i][j].classList.remove("grow");
-      }, 120);
-    }
-  }
-}
-
-// Trickle Effect
-let trickleRow = "";
-let trickleCol = "";
-
-function trickleDot(i, j) {
-  if (dotsArr[i] && dotsArr[i][j]) {
-    if (!dotsArr[i][j].classList.contains("grow")) {
-      dotsArr[i][j].classList.add("grow");
-
-      if (i === trickleRow) {
-        if (j === trickleCol) {
-          // Dot clicked
-          setTimeout(() => {
-            trickleDot(i + 1, j);
-            trickleDot(i - 1, j);
-            trickleDot(i, j + 1);
-            trickleDot(i, j - 1);
-          }, 400);
-        } else if (j > trickleCol) {
-          // Move right
-          setTimeout(() => {
-            trickleDot(i + 1, j);
-            trickleDot(i - 1, j);
-            trickleDot(i, j + 1);
-          }, 400);
-        } else if (j < trickleCol) {
-          // Move left
-          setTimeout(() => {
-            trickleDot(i + 1, j);
-            trickleDot(i - 1, j);
-            trickleDot(i, j - 1);
-          }, 400);
-        }
-      } else {
-        if (i > trickleRow) {
-          // Move up
-          setTimeout(() => {
-            trickleDot(i + 1, j);
-          }, 400);
-        } else if (i < trickleRow) {
-          // Mode down
-          setTimeout(() => {
-            trickleDot(i - 1, j);
-          }, 400);
-        }
-      }
-
-      setTimeout(() => {
-        dotsArr[i][j].classList.remove("grow");
-      }, 200);
     }
   }
 }
