@@ -44,6 +44,10 @@ function runEffect(i, j) {
     case "waves":
     default:
       waveDot(i, j);
+    case "trickle":
+      trickleRow = i;
+      trickleCol = j;
+      trickleDot(i, j);
   }
 }
 
@@ -67,6 +71,59 @@ function waveDot(i, j) {
         waveDot(i, j + 1);
         waveDot(i, j - 1);
       }, growSpeed);
+
+      setTimeout(() => {
+        dotsArr[i][j].classList.remove("grow");
+      }, shrinkSpeed);
+    }
+  }
+}
+
+let trickleRow = "";
+let trickleCol = "";
+
+function trickleDot(i, j) {
+  if (dotsArr[i] && dotsArr[i][j]) {
+    if (!dotsArr[i][j].classList.contains("grow")) {
+      dotsArr[i][j].classList.add("grow");
+
+      if (i === trickleRow) {
+        if (j === trickleCol) {
+          // Dot clicked
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+            trickleDot(i - 1, j);
+            trickleDot(i, j + 1);
+            trickleDot(i, j - 1);
+          }, growSpeed);
+        } else if (j > trickleCol) {
+          // Move right
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+            trickleDot(i - 1, j);
+            trickleDot(i, j + 1);
+          }, growSpeed);
+        } else if (j < trickleCol) {
+          // Move left
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+            trickleDot(i - 1, j);
+            trickleDot(i, j - 1);
+          }, growSpeed);
+        }
+      } else {
+        if (i > trickleRow) {
+          // Move up
+          setTimeout(() => {
+            trickleDot(i + 1, j);
+          }, growSpeed);
+        } else if (i < trickleRow) {
+          // Mode down
+          setTimeout(() => {
+            trickleDot(i - 1, j);
+          }, growSpeed);
+        }
+      }
 
       setTimeout(() => {
         dotsArr[i][j].classList.remove("grow");
