@@ -52,11 +52,22 @@
     </form>
 
     <form name="loop">
-      <label class="formgroupbox"
-        >Wave
-        <input type="box" name="loop" value="loop" />
-        <span class="checkmark"></span>
-      </label>
+      <div class="form-vcontainer">
+        <label class="formgroupbox"
+          >Loop
+          <input type="checkbox" name="loop" value="loop" />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="form-vcontainer">
+        <label class="flat-input-label">Loop Speed</label>
+        <input
+          class="flat-input"
+          name="loopSpeed"
+          type="number"
+          placeholder="Enter in ms: 1000ms = 1s"
+        />
+      </div>
     </form>
 
     <script src="index.js"></script>
