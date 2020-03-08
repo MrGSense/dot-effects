@@ -38,7 +38,22 @@ shrinkSpeedInput.addEventListener("input", e => {
   shrinkSpeed = e.target.value;
 });
 
-// Run Event
+// Checkbox Selection
+let loop = false;
+let loopSpeed = 1000;
+
+const checkboxLoop = document.forms["loop"].elements["loop"];
+const loopSpeedInput = document.forms["loop"].elements["loopSpeed"];
+
+checkboxLoop.addEventListener("click", () => {
+  loop = checkboxLoop.checked;
+});
+
+loopSpeedInput.addEventListener("input", e => {
+  loopSpeed = e.target.value;
+});
+
+// Run Effect
 function runEffect(i, j) {
   switch (effect) {
     case "waves":
@@ -51,11 +66,22 @@ function runEffect(i, j) {
   }
 }
 
+// Loop Effect
+function loopEffect(i, j) {
+  setInterval(() => {
+    runEffect(i, j);
+  }, loopSpeed);
+}
+
 // Trigger Effect
 dotsArr.forEach((cols, i) => {
   cols.forEach((dot, j) => {
     dot.addEventListener("click", () => {
-      runEffect(i, j);
+      if (loop) {
+        loopEffect(i, j);
+      } else {
+        runEffect(i, j);
+      }
     });
   });
 });
