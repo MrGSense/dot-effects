@@ -68,9 +68,13 @@ function runEffect(i, j) {
 
 // Loop Effect
 function loopEffect(i, j) {
-  setInterval(() => {
+  if (loop) {
     runEffect(i, j);
-  }, loopSpeed);
+
+    setTimeout(() => {
+      loopEffect(i, j);
+    }, loopSpeed);
+  }
 }
 
 // Trigger Effect
