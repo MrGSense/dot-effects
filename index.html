@@ -11,64 +11,68 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1>Click on a dot</h1>
+    <main>
+      <h1>Click on a dot</h1>
 
-    <div id="container" class="container"></div>
+      <div id="container" class="container"></div>
+    </main>
 
-    <h3>Select an effect</h3>
+    <div class="menu">
+      <h3>Select an effect</h3>
 
-    <form name="effects">
-      <label class="formgroupradio"
-        >Wave
-        <input type="radio" checked="checked" name="effect" value="wave" />
-        <span class="checkmark"></span>
-      </label>
-      <label class="formgroupradio"
-        >Trickle
-        <input type="radio" name="effect" value="trickle" />
-        <span class="checkmark"></span>
-      </label>
-    </form>
-
-    <form name="speed">
-      <div class="form-vcontainer">
-        <label class="flat-input-label">Grow Speed</label>
-        <input
-          class="flat-input"
-          name="growSpeed"
-          type="number"
-          placeholder="Enter in ms: 1000ms = 1s"
-        />
-      </div>
-      <div class="form-vcontainer">
-        <label class="flat-input-label">Shrink Speed</label>
-        <input
-          class="flat-input"
-          name="shrinkSpeed"
-          type="number"
-          placeholder="Enter in ms: 1000ms = 1s"
-        />
-      </div>
-    </form>
-
-    <form name="loop">
-      <div class="form-vcontainer">
-        <label class="formgroupbox"
-          >Loop
-          <input type="checkbox" name="loop" value="loop" />
+      <form name="effects">
+        <label class="formgroupradio"
+          >Wave
+          <input type="radio" checked="checked" name="effect" value="wave" />
           <span class="checkmark"></span>
         </label>
-      </div>
-      <div class="form-vcontainer">
-        <label class="flat-input-label">Loop Speed</label>
-        <input
-          class="flat-input"
-          name="loopSpeed"
-          type="number"
-          placeholder="Enter in ms: 1000ms = 1s"
-        />
-      </div>
-    </form>
+        <label class="formgroupradio"
+          >Trickle
+          <input type="radio" name="effect" value="trickle" />
+          <span class="checkmark"></span>
+        </label>
+      </form>
+
+      <form name="speed">
+        <div class="form-vcontainer">
+          <label class="flat-input-label">Grow Speed</label>
+          <input
+            class="flat-input"
+            name="growSpeed"
+            type="number"
+            placeholder="Enter in ms: 1000ms = 1s"
+          />
+        </div>
+        <div class="form-vcontainer">
+          <label class="flat-input-label">Shrink Speed</label>
+          <input
+            class="flat-input"
+            name="shrinkSpeed"
+            type="number"
+            placeholder="Enter in ms: 1000ms = 1s"
+          />
+        </div>
+      </form>
+
+      <form name="loop">
+        <div class="form-vcontainer">
+          <label class="formgroupbox"
+            >Loop
+            <input type="checkbox" name="loop" value="loop" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="form-vcontainer">
+          <label class="flat-input-label">Loop Speed</label>
+          <input
+            class="flat-input"
+            name="loopSpeed"
+            type="number"
+            placeholder="Enter in ms: 1000ms = 1s"
+          />
+        </div>
+      </form>
+    </div>
 
     <script src="index.js"></script>
   </body>
